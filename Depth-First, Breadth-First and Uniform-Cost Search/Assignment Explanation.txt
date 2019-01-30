@@ -1,0 +1,100 @@
+Student Name: Ismail Ulas Bayram
+Student ID: 220201040
+
+1. Explain how you decide on the heuristics you determine.
+
+	I determine heuristic by calculating Euclidean Distance for each point with respect to goal point.
+
+2. Comment on your findings with each approach (a, b, c-i, c-ii, d-i and d-ii):
+
+	a. Can the agent find all possible paths from the starting tile to the goal tile? How can this be made possible?
+
+			No, It can not find. We started starting tile and moved to goal tile step by step. In Breadth-First-Search scenario, there is one way to obtain the path which is based on exploring all neighbors of explored node. We only have one direction to traverse path and after finding goal tile, we also find exact path. Thus, there are only one path that BFS finds.
+
+		Can the agent find the path from the starting tile to the goal tile with minimum number of actions? If so, how? If not, what are the causes?
+
+			No, It can not find. In Breadth-First-Search, when finding path, we use queue approach. So, there is only one way to find the path which is traversing all nodes of leaves of tree respectively. The approach of this search does not deal with cost of movement point. Because of that, we can not move to goal tile with minimum number of actions by disturbing queue approach.
+
+			This situation happens inefficient performance about finding shortest path. It can be fast rather than other methods but all we need to find shortest path.
+
+			The causes are that;
+
+			1) Traversing the path with queue approach.
+			2) There is no any intuitional behavior.
+
+		Can the agent find the path that it reaches the goal tile with the minimum cost in movement points? If so, how? If not, what are the causes?
+
+			Since we did not use movement points in the path, It is irrelevant for Breadth-First-Search.
+
+		What would happen if additional movement points were negative?
+
+			Since we did not use movement points in the path, It is irrelevant for Breadth-First-Search.
+
+	-----------------------------------------------------------------------------------------------------------------------------------------------
+
+	b. Can the agent find all possible paths from the starting tile to the goal tile? How can this be made possible?
+
+			No, It can not find. We started starting tile and moved to goal tile step by step. In Depth-First-Search scenario, there is one way to obtain the path which is based on exploring child of explored node until we reach to bottom layer of the tree. We only have one direction to traverse path and after finding goal tile, we also find exact path. Thus, there are only one path that DFS finds.
+
+		Can the agent find the path from the starting tile to the goal tile with minimum number of actions? If so, how? If not, what are the causes?
+
+			No, It can not find. In Depth-First-Search, when finding path, we use stack approach. So, there is only one way to find the path which is traversing all childs of nodes recursively. The approach of this search does not deal with cost of movement point. Because of that, we can not move to goal tile with minimum number of actions by disturbing stack approach.
+
+			This situation happens inefficient performance about finding shortest path. It can be fast rather than other methods but all we need to find shortest path.
+
+			The causes are that;
+
+			1) Traversing the path with stack approach.
+			2) There is no any intuitional behavior (Same as BFS).
+
+		Can the agent find the path that it reaches the goal tile with the minimum cost in movement points? If so, how? If not, what are the causes?
+
+			Since we did not use movement points in the path, It is irrelevant for Depth-First-Search.
+
+		What would happen if additional movement points were negative?
+
+			Since we did not use movement points in the path, It is irrelevant for Depth-First-Search.
+
+	-----------------------------------------------------------------------------------------------------------------------------------------------
+
+	c. Can the agent find all possible paths from the starting tile to the goal tile? How can this be made possible?
+
+			(c-i & c-ii) Yes, It can find. In Uniform-Cost-Search, we started starting tile and moved to goal tile by checking move cost in every iteration. At every iteration, we select shortest path which has minimum cost(also when taking extra move points). Reaching the goal tile does not mean finding the solution. Maybe, there is an another solution much better. So, when trying to find best solution, we can find several paths at the same time. Because, when we find one path that reach the goal tile, we compare with another path that also reach the goal tile. Thus, it can give all possible paths like this.
+
+		Can the agent find the path from the starting tile to the goal tile with minimum number of actions? If so, how? If not, what are the causes?
+
+			(c-i & c-ii) Yes, It can find. In Uniform-Cost-Search, at every iteration, we select minimum path cost among several paths. This also give us minimum number of actions for solution. First of all, we control every possible movement for target tile and after that, we select the path in frontier list which has minimum move cost. Then we try again the same operation until reaching the goal tile with minimum movement.
+
+		Can the agent find the path that it reaches the goal tile with the minimum cost in movement points? If so, how? If not, what are the causes?
+
+			(c-ii) Yes, It can find. The same scenario happens with previous question. When taking extra move points, again our algorithm tries to find minimum path cost in frontier list at every iteration and it generates shortest path which reach to goal tile. However, the solution path within extra move point can be different from the solution path without extra move point.
+
+		What would happen if additional movement points were negative?
+
+			(c-ii) If movement points were negative, there are three different scenario in this situation. We can go back up to number of negative movement or we can eliminate this node or we can terminate the program and throw an error message.
+
+	-----------------------------------------------------------------------------------------------------------------------------------------------
+
+	d. Can the agent find all possible paths from the starting tile to the goal tile? How can this be made possible?
+
+			(d-i) Yes, It can find. In A*-Search with inadmissable approach, we started starting tile and moved to goal tile by checking move cost plus heuristic cost in every iteration. At every iteration, we select shortest path which has minimum cost(also when taking extra move points). Reaching the goal tile does not mean finding the solution. Maybe, there is an another solution much better. So, when trying to find best solution, we can find several paths at the same time. But since we set heuristic cost to big number to confuse the mind of algorithm, these possible paths can be wrong.
+
+			(d-ii) Yes, It can find. In A*-Search with admissable approach, we started starting tile and moved to goal tile by checking move cost plus heuristic cost in every iteration. At every iteration, we select shortest path which has minimum cost(also when taking extra move points). Reaching the goal tile does not mean finding the solution. Maybe, there is an another solution much better. So, when trying to find best solution, we can find several paths at the same time. Because, when we find one path that reach the goal tile, we compare with another path that also reach the goal tile. Thus, it can give all possible paths like this.
+
+		Can the agent find the path from the starting tile to the goal tile with minimum number of actions? If so, how? If not, what are the causes?
+
+			(d-i) No, It can not find. In A*-Search with inadmissable approach, we set heuristic cost to big number, so we confuse the mind of algorithm. When the algorithm meet the node which has the big heuristic cost and min move cost, it does not go to it. Thus, our algorithm will eliminate this node and also eliminate minimum number of action. 
+
+			(d-ii) Yes, It can find. In A*-Search with admissable approach, at every iteration, we select minimum path cost plus heuristic cost among several paths. This also give us minimum number of actions for solution. First of all, we control every possible movement for target tile and after that, we select the path in frontier list which has minimum move cost plus heuristic cost. Then we try again the same operation until reaching the goal tile with minimum movement.
+
+		Can the agent find the path that it reaches the goal tile with the minimum cost in movement points? If so, how? If not, what are the causes?
+
+			(d-i) No, It can not find. In A*-Search with inadmissable approach. The same scenario happens with previous question. We set heuristic cost to big number, so we confuse the mind of algorithm. When the algorithm meet the node which has the big heuristic cost and min move cost, it does not go to it. Thus, our algorithm will eliminate this node and also eliminate minimum number of action. 
+
+			(d-ii) Yes, It can find. In A*-Search with admissable approach, The same scenario happens with previous question. When taking extra move points, again our algorithm tries to find minimum path cost plus heuristic cost in frontier list at every iteration and it generates shortest path which reach to goal tile. However, the solution path within extra move point can be different from the solution path without extra move point.
+
+		What would happen if additional movement points were negative?
+
+			(d-i & d-ii) If movement points were negative, our move cost is smaller than our heuristic cost. Therefore, our path will become inadmissable and inconsistent automatically. But there are three different scenario in this situation. We can go back up to number of negative movement or we can eliminate this node or we can terminate the program and throw an error message.
+
+
